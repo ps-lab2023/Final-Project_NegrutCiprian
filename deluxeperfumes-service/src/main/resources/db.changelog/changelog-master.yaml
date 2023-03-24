@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: /changelogs/create_schema.yml
+      relativeToChangelogFile: true

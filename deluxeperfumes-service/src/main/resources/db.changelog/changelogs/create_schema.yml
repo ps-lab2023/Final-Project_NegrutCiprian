@@ -1,0 +1,13 @@
+databaseChangeLog:
+
+
+  - changeSet:
+      id: PSI-1
+      author: CiprianNGR
+
+  - include:
+      file: db.changelog/sql/create_tables.sql
+      relativeToChangelogFile: false
+  - include:
+      file: db.changelog/sql/insert_users.sql
+      relativeToChangelogFile: false

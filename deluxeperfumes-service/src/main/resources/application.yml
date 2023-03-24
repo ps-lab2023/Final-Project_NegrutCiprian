@@ -1,0 +1,39 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:db.changelog/changelog-master.yaml
+  application:
+    name: projectIS
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user
+    password: password
+    url: jdbc:mysql://db:3306/deluxeperfumes
+  jpa:
+    hibernate:
+      ddl-auto: none
+      use-new-id-generator-mappings: false
+  h2:
+    console:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  info:
+    git:
+      mode: full
+
+springdoc:
+  api-docs:
+    path: /app
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret: Swx5Z0IvuDk6NkBHUQoGWofrkXCArxNhpZITn9KN2wbtbXbXXLX4s9R6c5dXDE0r
+  accessTokenExpiration: 86400000
+  refreshTokenExpiration: 604800000
