@@ -27,11 +27,11 @@ public class SwaggerConfig {
                 .scheme("bearer")
                 .bearerFormat("JWT")))
         .info(new Info().title("DeluxePerfumes API")
-            .description("IS application")
+            .description("PS application")
             .version("V0.0.1")
             .license(new License().name("License name: Deluxe Perfumes - JWT")))
         .externalDocs(new ExternalDocumentation()
-            .description("IS API Documentation"));
+            .description("PS API Documentation"));
   }
 
   @Bean

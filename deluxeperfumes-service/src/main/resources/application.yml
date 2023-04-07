@@ -3,7 +3,7 @@ spring:
     enabled: true
     change-log: classpath:db.changelog/changelog-master.yaml
   application:
-    name: projectIS
+    name: projectPS
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
