@@ -1,0 +1,19 @@
+.navbar {
+  border-bottom: var(--light-blue) 3px solid;
+}
+.navbar-nav {
+  flex-direction: row;
+}
+.nav-item {
+  margin-left: 3rem;
+}
+.navbar-brand {
+  color: var(--light-blue);
+}
+.navbar-brand > span {
+  color: var(--light-orange);
+}
+.door-nav-item {
+  margin-left: 1.5rem;
+  line-height: 1.75rem;
+}

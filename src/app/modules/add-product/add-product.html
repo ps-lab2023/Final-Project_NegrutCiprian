@@ -1,0 +1,81 @@
+<div class='main-content'>
+  <div class='selection-contetnt selection-content-p30' style='padding-left: 125px; padding-top: 100px'>
+    <div class='container-fluid'>
+      <form d='request' class='main_form' [formGroup]='addProductFormGroup' (ngSubmit)='onSubmit()'>
+        <div formGroupName='product' class='form-area'>
+          <div style='padding-bottom:50px; text-align: center'>
+            <h2 style='color: #fcc4ac;'>Create Product</h2>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <input formControlName='name' type='type' class='contactus' placeholder='Name'>
+              <div *ngIf='name.invalid && (name.dirty || name.touched)' class='alert alert-danger mt-1'>
+                <div *ngIf="(name.errors != null && (name.errors['required'] || name.errors['notOnlyWhiteSpace']))">
+                  Name is required
+                </div>
+                <div *ngIf="(name.errors != null && name.errors['minLength'])">
+                  Name must be at least 2 characters long
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <input formControlName='category' type='type' class='contactus' placeholder='Category'>
+              <div *ngIf='category.invalid && (category.dirty || category.touched)' class='alert alert-danger mt-1'>
+                <div
+                  *ngIf="(category.errors != null && (category.errors['required'] || category.errors['notOnlyWhiteSpace']))">
+                  Category is required
+                </div>
+                <div *ngIf="(category.errors != null && category.errors['minLength'])">
+                  Category must be at least 2 characters long
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <input formControlName='desc' type='type' class='contactus' placeholder='Description'>
+              <div *ngIf='desc.invalid && (desc.dirty || desc.touched)' class='alert alert-danger mt-1'>
+                <div *ngIf="(desc.errors != null && (desc.errors['required'] || desc.errors['notOnlyWhiteSpace']))">
+                  Description is required
+                </div>
+                <div *ngIf="(desc.errors != null && desc.errors['minLength'])">
+                  Description must be at least 2 characters long
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-12'>
+              <input formControlName='price' type='type' class='contactus' placeholder='Price'>
+              <div *ngIf='price.invalid && (price.dirty || price.touched)' class='alert alert-danger mt-1'>
+                <div *ngIf="(price.errors != null && price.errors['required'])">
+                  Price is required
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <div class='text-center'>
+            <button type='submit' class='btn btn-info' style='color: white; border-radius: 15px;'>
+              Create
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+      <br>
+      <div *ngIf='addSuccess' class='alert alert-warning col-md-12' role='alert'>
+        Product was added successfully.
+      </div>
+
+    </div>
+  </div>
+</div>

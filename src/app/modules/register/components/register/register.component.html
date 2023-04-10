@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <img src='assets/logo_transparent_home.png' alt='OnlineShop' class='img-responsive'
+         style='padding-bottom: 100px'>
+    <form class="card col-sm-4 md-text" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <div class="w-75 ms-auto me-auto">
+        <h1 class="fw-normal mt-4 mb-4" style='color: gray; text-align: center'>Register</h1>
+
+        <div class="form-group">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="#6c757d" class="bi bi-person-fill" viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+          </svg>
+          <input type="text" placeholder="Username" class="form-control" id="username" formControlName="username" />
+        </div>
+
+        <div class="form-group mt-3 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="#6c757d" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+          </svg>
+          <input type="password" placeholder="Password" class="form-control" id="password" formControlName="password" />
+        </div>
+
+        <div class="form-group mt-3 mb-3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1.25rem" height="1.25rem" fill="#6c757d" class="bi bi-lock-fill" viewBox="0 0 16 16">
+            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+          </svg>
+          <input type="password" placeholder="Confirm Password" class="form-control" id="confirmPassword" formControlName="confirmPassword" />
+        </div>
+      </div>
+
+      <div class="d-flex flex-column w-75 ms-auto me-auto mt-4 mb-4">
+        <button type="submit" class="btn btn-primary md-text" style='border-color: #f9c4ac'>Register</button>
+      </div>
+
+    </form>
+  </div>
+</div>

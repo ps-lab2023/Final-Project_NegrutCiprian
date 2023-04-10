@@ -1,0 +1,48 @@
+.brand {
+  color: var(--light-blue);
+}
+.brand > span {
+  color: var(--light-orange);
+}
+form {
+  border-top-color: var(--light-blue);
+  border-top-width: 0.33rem;
+  border-radius: 50px;
+  box-shadow: 0 12px 12px rgb(0 0 0 / 25%);
+}
+.form-group:hover > input:not(:focus) {
+  border-color: black;
+}
+.form-group:hover > svg {
+  fill: black;
+}
+input {
+  height: 2.5rem;
+  padding: 0.375rem 2rem;
+  border-radius: 15px;
+}
+input:focus {
+  border-color: #A9F4F7;
+}
+svg {
+  position: absolute;
+  margin: 0.625rem 0.375rem;
+}
+button {
+  background-color: var(--light-blue);
+  transition: 0.4s;
+  border-width: 2px;
+  border-color: var(--light-blue);
+  border-radius: 15px;
+}
+button:hover {
+  background-color: transparent;
+  color: var(--light-blue);
+}
+.form-link {
+  text-decoration: none;
+  color: var(--light-blue);
+}
+.form-link:hover {
+  color: var(--light-orange);
+}
