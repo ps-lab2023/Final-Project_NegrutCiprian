@@ -28,4 +28,33 @@ public interface PerfumeEndpoint {
     )
     @PostMapping
     PerfumeDto createPerfume(@org.springframework.web.bind.annotation.RequestBody PerfumeDto perfumeDto);
+
+    @Operation(summary = "Update perfume")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Perfume was updated")})
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            required = true,
+            content = {
+                    @Content(schema = @Schema(implementation = PerfumeDto.class))
+            }
+    )
+    @PutMapping("/{perfumeExternalId}")
+    void updatePerfume(@org.springframework.web.bind.annotation.RequestBody PerfumeDto perfumeDto, @PathVariable UUID perfumeExternalId);
+
+    @Operation(summary = "Delete perfume")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Perfume was deleted"),
+            @ApiResponse(responseCode = "404", description = "Perfume not found", content = @Content)})
+    @DeleteMapping("/{perfumeExternalId}")
+    void deletePerfume(@PathVariable UUID perfumeExternalId);
+
+    @Operation(summary = "Get perfumes paged")
+    @ApiResponse(responseCode = "200", description = "Perfumes found")
+    @GetMapping
+    Page<PerfumeDto> getPerfumes(@RequestParam(defaultValue = "") String searchString,
+                                 @PageableDefault Pageable pageable);
+
+    @Operation(summary = "Get perfume")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "Perfume found"),
+            @ApiResponse(responseCode = "404", description = "Perfume not found", content = @Content)})
+    @GetMapping("/{perfumeExternalId}")
+    PerfumeDto getPerfumeByExternalId(@PathVariable UUID perfumeExternalId);
 }

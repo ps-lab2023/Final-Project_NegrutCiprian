@@ -29,4 +29,36 @@ public class PerfumeService {
             perfume.setIdentifier(perfume.getName().substring(0, 3) + LocalTime.now().getSecond());
         return perfumeMapper.toDto(perfumeRepository.save(perfume));
     }
+
+    public void updatePerfume(PerfumeDto perfumeUpdated, UUID perfumeExternalId) {
+        var perfumeToUpdate = perfumeRepository.findPerfumeByExternalId(perfumeExternalId)
+                .orElseThrow(() -> new PerfumeNotFoundException(
+                        "Could not find perfume with externalId " + perfumeExternalId));
+        perfumeToUpdate.setIdentifier(perfumeUpdated.getIdentifier());
+        perfumeToUpdate.setName(perfumeUpdated.getName());
+        perfumeToUpdate.setUpdatedDate(LocalDate.now());
+        perfumeToUpdate.setCategory(perfumeUpdated.getCategory());
+        perfumeToUpdate.setDescription(perfumeToUpdate.getDescription());
+        perfumeRepository.save(perfumeToUpdate);
+    }
+
+    public void deletePerfume(UUID perfumeExternalId) {
+        perfumeRepository.deletePerfumeByExternalId(perfumeExternalId);
+
+    }
+
+    public Page<PerfumeDto> findAll(String searchTerm, Pageable pageable) {
+        if (searchTerm.isEmpty()) {
+            return perfumeRepository.findAll(pageable).map(perfumeMapper::toDto);
+        }
+        return perfumeRepository.findAllByIdentifierContainingIgnoreCaseOrNameContainingIgnoreCase(
+                searchTerm, searchTerm, pageable).map(perfumeMapper::toDto);
+    }
+
+    public PerfumeDto getPerfumeByExternalID(UUID perfumeExternalID) {
+        return perfumeMapper.toDto(perfumeRepository.findPerfumeByExternalId(perfumeExternalID)
+                .orElseThrow(() -> new PerfumeNotFoundException(
+                        "Could not find perfume with externalId: " + perfumeExternalID)));
+    }
+
 }

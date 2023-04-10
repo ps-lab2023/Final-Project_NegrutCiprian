@@ -22,4 +22,24 @@ public class OrderController implements OrderEndpoint {
     public OrderDto createOrder(OrderDto orderDto) {
         return orderService.createOrder(orderDto);
     }
+
+    @Override
+    public void updateOrder(OrderDto orderDto, UUID orderExternalId) {
+        orderService.updateOrder(orderDto, orderExternalId);
+    }
+
+    @Override
+    public void deleteOrder(UUID orderExternalId) {
+        orderService.deleteOrder(orderExternalId);
+    }
+
+    @Override
+    public Page<OrderDto> getOrders(String searchString, Pageable pageable) {
+        return orderService.findAll(searchString, pageable);
+    }
+
+    @Override
+    public OrderDto getOrderByExternalId(UUID orderExternalId) {
+        return orderService.getOrderByExternalID(orderExternalId);
+    }
 }

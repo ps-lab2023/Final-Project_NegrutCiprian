@@ -54,4 +54,42 @@ public class OrderService extends Observable {
 
         return orderMapper.toDto(orderSaved);
     }
+
+    public void updateOrder(OrderDto orderUpdated, UUID orderExternalId) {
+        var orderToUpdate = orderRepository.findOrderByExternalId(orderExternalId)
+                .orElseThrow(() -> new OrderNotFoundException(
+                        "Could not find order with externalId " + orderExternalId));
+        if(!orderUpdated.getPerfumeNames().isEmpty()) {
+            orderUpdated.getPerfumeNames().forEach(name -> {
+                var perfume = perfumeRepository.findPerfumeByName(name).orElseThrow(
+                        () -> new PerfumeNotFoundException("Could not find perfume with name: " + name)
+                );
+                orderToUpdate.getPerfumes().add(perfume);
+            });
+        }
+        orderToUpdate.setIdentifier(orderUpdated.getUsername().substring(0, 4) + LocalTime.now().getNano());
+        orderToUpdate.setUpdatedDate(LocalDate.now());
+        var orderSaved = orderRepository.save(orderToUpdate);
+        orderSaved.getPerfumes().forEach(perfume -> {
+            perfume.setOrder(orderSaved);
+        });
+    }
+
+    public void deleteOrder(UUID orderExternalId) {
+        orderRepository.deleteOrderByExternalId(orderExternalId);
+    }
+
+    public Page<OrderDto> findAll(String searchTerm, Pageable pageable) {
+        if (searchTerm.isEmpty()) {
+            return orderRepository.findAll(pageable).map(orderMapper::toDto);
+        }
+        return orderRepository.findAllByIdentifierContainingIgnoreCaseOrUsernameContainingIgnoreCase(
+                searchTerm, searchTerm, pageable).map(orderMapper::toDto);
+    }
+
+    public OrderDto getOrderByExternalID(UUID orderExternalID) {
+        return orderMapper.toDto(orderRepository.findOrderByExternalId(orderExternalID)
+                .orElseThrow(() -> new OrderNotFoundException(
+                        "Could not find order with externalId: " + orderExternalID)));
+    }
 }

@@ -14,4 +14,11 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     Optional<Order> findOrderByExternalId(UUID orderExternalId);
 
+    void deleteOrderByExternalId(UUID orderExternalId);
+
+    Page<Order> findAllByIdentifierContainingIgnoreCaseOrUsernameContainingIgnoreCase(
+            String searchString, String searchString1, Pageable pageable);
+
+    Optional<Order> findOrderByIdentifier(String identifier);
+
 }
