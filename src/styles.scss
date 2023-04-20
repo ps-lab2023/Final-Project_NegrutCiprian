@@ -34,12 +34,12 @@ body {
 
 /* NEW CSS */
 
-.main_form {
-  padding: 2px 2px;
-  margin: 0 300px;
-  border-radius: 55px;
-  background-color: #474168;
-}
+//.main_form {
+//  padding: 2px 2px;
+//  margin: 0 300px;
+//  border-radius: 55px;
+//  background-color: #474168;
+//}
 
 .main_form .contactus {
   border: white solid 3px;
@@ -379,13 +379,22 @@ input.au-input.au-input-xl{
   margin-left:15px
 }
 
+.username{
+  line-height:35px;
+  color:#fff;
+  position: absolute;
+  bottom: 130px;
+  padding-left:20px;
+  text-align: center;
+}
+
 .total{
   background:#9c7c8c;
   line-height:35px;
   color:#fff;
-  border-radius:22px;
+  border-radius:0px;
   float:left;
-  margin-top:7px;
+  margin-top:12px;
   padding-left:15px
 }
 
@@ -394,8 +403,8 @@ input.au-input.au-input-xl{
   background:#fff;
   padding:0 13px;
   color:#9c7c8c;
-  border-top-right-radius:20px;
-  border-bottom-right-radius:20px;
+  border-top-right-radius:0px;
+  border-bottom-right-radius:0px;
   margin-left:11px
 }
 
@@ -703,6 +712,8 @@ input.au-input.au-input-xl{
   padding:50px 50px;
   border-radius: 55px;
   text-align: center;
+  width: 500px;
+  height: 500px;
 }
 .form-area h3{
   position:absolute;

@@ -13,7 +13,7 @@ import { TokenService } from '../../../core/services/token.service';
 })
 export class HomeComponent implements OnInit {
 
-  products : Product[] = [];
+  products: Product[] = [];
   currentCategoryId: string = "";
   searchMode: boolean = false;
 

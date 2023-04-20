@@ -15,7 +15,8 @@ export class LayoutComponent {
   totalPrice: number = 0.00;
   totalQuantity: number = 0;
 
-  constructor(private tokenService: TokenService, private router: Router, private cartService: CartService, private loginService: LoginService) {}
+  constructor(private tokenService: TokenService, private router: Router,
+              private cartService: CartService, private loginService: LoginService) {}
 
   public logout() {
     this.tokenService.logout();
@@ -31,6 +32,12 @@ export class LayoutComponent {
 
   public isLoggedIn(){
     return this.tokenService.getUsername() != null;
+  }
+
+  public returnUsernameLoggedIn() {
+    let username = this.tokenService.getUsername();
+    // @ts-ignore
+    return username?.charAt(0).toUpperCase() + username?.substring(1);
   }
 
   public isAdmin(){

@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, map } from 'rxjs';
-import { CartItem } from '../../../models/cart-item';
-import { HttpClient } from '@angular/common/http';
-import { LoginService } from '../../login/services/login.service';
-import { TokenService } from '../../core/services/token.service';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, map, Subject} from 'rxjs';
+import {CartItem} from '../../../models/cart-item';
+import {HttpClient} from '@angular/common/http';
+import {TokenService} from '../../core/services/token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -84,10 +83,8 @@ export class CartService {
     ).pipe(
       map(response => {
         console.log(response);
-        const mapResponse = new Map(Object.entries(response));
-        return mapResponse;
+        return new Map(Object.entries(response));
       })
     );
   }
-
 }

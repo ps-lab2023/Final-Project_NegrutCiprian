@@ -1,5 +1,5 @@
 <div class='main-content'>
-  <div class='selection-contetnt selection-content-p30' style='padding-left: 125px; padding-top: 100px'>
+  <div class='selection-contetnt selection-content-p30' style='padding-left: 35%; padding-top: 100px'>
     <div class='container-fluid'>
       <form d='request' class='main_form' [formGroup]='addProductFormGroup' (ngSubmit)='onSubmit()'>
         <div formGroupName='product' class='form-area'>
@@ -8,7 +8,7 @@
           </div>
 
           <div class='row'>
-            <div class='col-md-12'>
+            <div class='col-md-15'>
               <input formControlName='name' type='type' class='contactus' placeholder='Name'>
               <div *ngIf='name.invalid && (name.dirty || name.touched)' class='alert alert-danger mt-1'>
                 <div *ngIf="(name.errors != null && (name.errors['required'] || name.errors['notOnlyWhiteSpace']))">
@@ -75,7 +75,6 @@
       <div *ngIf='addSuccess' class='alert alert-warning col-md-12' role='alert'>
         Product was added successfully.
       </div>
-
     </div>
   </div>
 </div>
