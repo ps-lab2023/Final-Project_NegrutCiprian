@@ -38,7 +38,7 @@ body {
 //  padding: 2px 2px;
 //  margin: 0 300px;
 //  border-radius: 55px;
-//  background-color: #474168;
+//  background-color: #5b0e2d;
 //}
 
 .main_form .contactus {
@@ -264,7 +264,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background-color: #474168;
+  background-color: #5b0e2d;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -389,7 +389,7 @@ input.au-input.au-input-xl{
 }
 
 .total{
-  background:#9c7c8c;
+  background:#696669ff;
   line-height:35px;
   color:#fff;
   border-radius:0px;
@@ -402,7 +402,7 @@ input.au-input.au-input-xl{
   display:inline-block;
   background:#fff;
   padding:0 13px;
-  color:#9c7c8c;
+  color:#696669ff;
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
   margin-left:11px
@@ -461,7 +461,7 @@ input.au-input.au-input-xl{
 }
 
 .menu-sidebar .logo{
-  background:#474168;
+  background:#5b0e2d;
   height:175px;
   display:-webkit-box;
   display:-webkit-flex;
@@ -476,7 +476,7 @@ input.au-input.au-input-xl{
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
-  border-right:1px solid #474168;
+  border-right:1px solid #5b0e2d;
   position:relative;
   z-index:3
 }
@@ -492,7 +492,7 @@ input.au-input.au-input-xl{
 
 .menu-sidebar-content{
   position:relative;
-  background-color: #474168;
+  background-color: #5b0e2d;
   height:-webkit-calc(100vh - 75px);
   height:-moz-calc(100vh - 75px);
   height:calc(100vh - 75px)
@@ -706,8 +706,18 @@ input.au-input.au-input-xl{
  * ----------------------------
  */
 
+.order-form-area{
+  background:#5b0e2d;
+  position:relative;
+  padding:50px 5px;
+  border-radius: 55px;
+  text-align: center;
+  width: 500px;
+  height: 500px;
+}
+
 .form-area{
-  background:#474168;
+  background:#5b0e2d;
   position:relative;
   padding:50px 50px;
   border-radius: 55px;
@@ -841,8 +851,8 @@ select{
 
 .table-rounded{
   border-radius: 30px;
-  border: 4px solid #474168;
-  background: #474168;
+  border: 4px solid #5b0e2d;
+  background: #5b0e2d;
 }
 
 table.table.table-bordered tr{
@@ -854,7 +864,7 @@ table.table.table-bordered tr{
 }
 
 table.table.table-bordered th{
-  background: #474168;
+  background: #5b0e2d;
   color:#fff;
   font-size:14px;
   padding:30px;
@@ -881,7 +891,7 @@ table.table.table-bordered th{
 .price{
   margin:15px 0 0;
   font-weight:800;
-  color:#f9c4ac
+  color:#5b0e2d
 }
 
 .detail-section{
@@ -900,8 +910,8 @@ table.table.table-bordered th{
  */
 
 .btn-info{
-  background-color:#9c7c8c!important;
-  border-color:#9c7c8c!important;
+  background-color:#696669ff!important;
+  border-color:#696669ff!important;
 }
 a.primary-btn{
   background:#05143f;

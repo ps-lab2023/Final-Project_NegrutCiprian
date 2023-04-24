@@ -23,7 +23,7 @@
                 <div class="row no-gutters">
                   <div class="col">
                     <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm"
-                            style='background-color: #9c7c8c; border-color: #9c7c8c'>
+                            style='background-color: #696669ff; border-color: #696669ff'>
                       <i class="fas fa-minus" style="font-weight: bold">-</i>
                     </button>
                   </div>
@@ -32,7 +32,7 @@
                   </div>
                   <div class="col">
                     <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm"
-                            style='background-color: #9c7c8c; border-color: #9c7c8c'>
+                            style='background-color: #696669ff; border-color: #696669ff'>
                       <i class="fas fa-plus" style="font-weight: bold">+</i>
                     </button>
                   </div>
@@ -43,7 +43,7 @@
 
               <div>
                 <button (click)="removeFromCart(tempCartItem)" class="btn btn-primary btn-sm mt-2"
-                        style='background-color: #9c7c8c; border-color: #9c7c8c; font-weight: bold' >
+                        style='background-color: #696669ff; border-color: #696669ff; font-weight: bold' >
                   Remove
                 </button>
               </div>
@@ -59,7 +59,7 @@
               <p>Shipping: FREE</p>
               <p>Total Price: {{totalPrice | currency: "EUR"}}</p>
               <button class="btn btn-primary" (click)='placeOrder()'
-                      style='background-color: #9c7c8c; border-color: #9c7c8c; font-weight: bold'>
+                      style='background-color: #696669ff; border-color: #696669ff; font-weight: bold'>
                 Place Order
               </button>
             </td>

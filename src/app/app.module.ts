@@ -5,6 +5,7 @@ import { SharedModule } from "./modules/shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { CartDetailsComponent } from './modules/cart-details/cart-details';
 import { AddProductComponent } from './modules/add-product/add-product';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AddProductComponent } from './modules/add-product/add-product';
   imports: [
     CoreModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

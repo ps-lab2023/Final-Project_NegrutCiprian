@@ -11,7 +11,7 @@
             <h6>Description: {{tempProduct.description}}</h6>
             <h6><div class='price'>{{tempProduct.price | currency:'EUR'}}</div></h6>
             <h6><button (click)='addToCart(tempProduct)' class='btn btn-primary btn-sm'
-              style='background-color: #9c7c8c; border-color: #9c7c8c'>Add to cart</button>
+              style='background-color: #696669ff; border-color: #696669ff'>Add to cart</button>
             <br><br>
             <button *ngIf="isAdmin() == true" (click)='delete(tempProduct.externalId)' class='btn btn-primary btn-sm'
                     style='background-color: #f84f2b; border-color: #f84f2b; '>Delete</button></h6>

@@ -30,6 +30,14 @@ export class LayoutComponent {
     this.router.navigate(["add-product"]);
   }
 
+  public viewOrders(){
+    this.router.navigate(["app-view-order"]);
+  }
+
+  public sendEmail(){
+    this.router.navigate(["app-contact"]);
+  }
+
   public isLoggedIn(){
     return this.tokenService.getUsername() != null;
   }

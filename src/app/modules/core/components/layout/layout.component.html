@@ -34,6 +34,12 @@
         <li *ngIf="isAdmin() == true">
           <button (click)='toAddProduct()' style='color: #fcc4ac'>Add Product</button>
         </li>
+        <li *ngIf="isAdmin() == true">
+          <button (click)='viewOrders()' style='color: #fcc4ac'>View Order</button>
+        </li>
+        <li *ngIf="isAdmin() == true">
+          <button (click)='sendEmail()' style='color: #fcc4ac'>Send Email</button>
+        </li>
       </ul>
     </nav>
     <div class='username' style="font-size: 25px">
