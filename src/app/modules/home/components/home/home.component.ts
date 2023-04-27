@@ -5,6 +5,8 @@ import { CartService } from '../../services/cart-service';
 import { Product } from '../../../../models/product';
 import { CartItem } from '../../../../models/cart-item';
 import { TokenService } from '../../../core/services/token.service';
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FavoriteService} from "../../services/favorite.service";
 
 @Component({
   selector: 'app-home',
@@ -15,42 +17,39 @@ export class HomeComponent implements OnInit {
 
   products: Product[] = [];
   currentCategoryId: string = "";
-  searchMode: boolean = false;
+  form: FormGroup;
 
   constructor(private productService: ProductService,
               private cartService: CartService,
               private route: ActivatedRoute,
               private tokenService: TokenService,
-              private router: Router) { }
+              private router: Router,
+              private formBuilder: FormBuilder,
+              private favoriteService: FavoriteService) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(() => {
-      this.listProducts();
+    this.listProducts();
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.form = this.formBuilder.group({
+        name: new FormControl('', []),
+        category: new FormControl('', []),
+        description: new FormControl('', []),
+        price: new FormControl('', []),
+        externalId: new FormControl('', []),
+        identifier: new FormControl('', []),
+        promo: new FormControl('', [])
     });
   }
 
   listProducts(){
     this.handleListProducts();
-
-    // this.searchMode = this.route.snapshot.paramMap.has("keyword");
-    // if (this.searchMode){
-    //   // this.handleSearchProducts();
-    // }else{
-    //   this.handleListProducts();
-    // }
   }
 
-  // handleSearchProducts(){
-  //   const theKeyword = this.route.snapshot.paramMap.get("keyword")!;
-  //   this.productService.searchProducts(theKeyword).subscribe(
-  //     data => {
-  //       this.products = data;
-  //     }
-  //   );
-  // }
-
   handleListProducts(){
-    console.log(this.route.snapshot.paramMap);
+    console.log(this.products);
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has("type");
 
     if (hasCategoryId) {
@@ -74,6 +73,12 @@ export class HomeComponent implements OnInit {
     this.cartService.addToCart(cartItem);
   }
 
+  addToFavorite(product: Product){
+    console.log(product);
+    const favItem = new CartItem(product);
+    this.favoriteService.addToFavorite(favItem);
+  }
+
   isAdmin(){
     let token = this.tokenService.getDecodedAccessToken(this.tokenService.getAccessToken()!);
     let responseMap = new Map(Object.entries(token));
@@ -90,4 +95,56 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  update(id: String, product: Product){
+    console.log(product);
+    this.productService.updateProduct(id, product).subscribe(
+      () => this.handleListProducts()
+    );
+  }
+
+  openPopup(product: Product){
+    let popup = document.getElementById("popup");
+    popup!.classList.add("open-popup");
+    this.form.patchValue({
+      name: product.name,
+      category: product.category,
+      description: product.description,
+      price: product.price,
+      externalId: product.externalId,
+      identifier: product.identifier,
+      promo: ""
+    })
+    console.log(this.form.value);
+  }
+
+  closePopup(){
+    let popup = document.getElementById("popup");
+    popup!.classList.remove("open-popup");
+    let id = this.form.get("externalId").value;
+    console.log(this.form.value);
+    this.update(id, this.form.value);
+  }
+
+  openPopupPromo(product: Product){
+    let popup = document.getElementById("popup-promo");
+    popup!.classList.add("open-popup-promo");
+    this.form.patchValue({
+      name: product.name,
+      category: product.category,
+      description: product.description,
+      price: product.price,
+      externalId: product.externalId,
+      identifier: product.identifier,
+      promo: "%"
+    })
+    console.log(this.form.value);
+  }
+
+  closePopupPromo(){
+    let popup = document.getElementById("popup-promo");
+    popup!.classList.remove("open-popup-promo");
+    let id = this.form.get("externalId").value;
+    console.log(this.form.value);
+    this.update(id, this.form.value);
+  }
 }

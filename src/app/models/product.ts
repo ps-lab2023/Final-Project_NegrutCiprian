@@ -7,5 +7,6 @@ export class Product {
     public price: number,
     public externalId: string,
     public image: String | null,
+    public promo: string
 ){}
 }

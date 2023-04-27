@@ -6,7 +6,7 @@
           <tr style='border-color: transparent'>
             <th width="20%" style='border-top-left-radius: 20px; color: #f9c4ac; font-size: 20px'>ProductImage</th>
             <th width="50%" style='color: #f9c4ac; font-size: 20px'>Product Detail</th>
-            <th width="30%" style='border-top-right-radius: 20px; color: #f9c4ac'></th>
+            <th width="30%" style='border-top-right-radius: 20px;'></th>
           </tr>
 
           <tr *ngFor="let tempCartItem of cartItems">
@@ -23,7 +23,7 @@
                 <div class="row no-gutters">
                   <div class="col">
                     <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm"
-                            style='background-color: #696669ff; border-color: #696669ff'>
+                            style='background-color: #313131; border-color: #313131'>
                       <i class="fas fa-minus" style="font-weight: bold">-</i>
                     </button>
                   </div>
@@ -32,7 +32,7 @@
                   </div>
                   <div class="col">
                     <button (click)="incrementQuantity(tempCartItem)" class="btn btn-primary btn-sm"
-                            style='background-color: #696669ff; border-color: #696669ff'>
+                            style='background-color: #313131; border-color: #313131'>
                       <i class="fas fa-plus" style="font-weight: bold">+</i>
                     </button>
                   </div>
@@ -43,7 +43,7 @@
 
               <div>
                 <button (click)="removeFromCart(tempCartItem)" class="btn btn-primary btn-sm mt-2"
-                        style='background-color: #696669ff; border-color: #696669ff; font-weight: bold' >
+                        style='background-color: #313131; border-color: #313131; font-weight: bold' >
                   Remove
                 </button>
               </div>
@@ -52,15 +52,17 @@
             </td>
           </tr>
 
-          <tr style='border-color: transparent;'>
+          <tr style='border-color: #5b0e2d; border-width: 3px'>
             <td colspan="2"></td>
-            <td style="font-weight: bold">
+            <td>
               <p>Total Quantity: {{totalQuantity}}</p>
               <p>Shipping: FREE</p>
               <p>Total Price: {{totalPrice | currency: "EUR"}}</p>
-              <button class="btn btn-primary" (click)='placeOrder()'
-                      style='background-color: #696669ff; border-color: #696669ff; font-weight: bold'>
-                Place Order
+              <button class="button-order" (click)='placeOrder()' style="background: #313131; margin-bottom: 5px">
+                <span>Place Order</span>
+              </button>
+              <button class="button-order" (click)='openPopupPromoCart()' style="font-size: 12px;margin-left: 20px; background: #313131">
+                <span>Promo Code</span>
               </button>
             </td>
           </tr>
@@ -71,4 +73,34 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class='popup-promo-cart' id="popup-promo-cart" style="z-index: 10; opacity:0.95;">
+  <form d='request' class='main_form'>
+    <div class='popup-promo-cart-form-area' [formGroup]="formPromo">
+      <div style='padding-bottom:15px; text-align: center'>
+        <h2 style='color: #fcc4ac;'>Promo Product</h2>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <label class="label">Price: </label>
+          <input  type='type' class='contactus' placeholder='Promo' formControlName="promo">
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li (click)='closePopupPromoCart()' style="width: 10em; height: 3em; border-color: #fcc4ac; color: #fff">
+            Submit
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </form>
 </div>

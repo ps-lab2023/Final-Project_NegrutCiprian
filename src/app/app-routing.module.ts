@@ -4,14 +4,14 @@ import { AuthGuard } from './modules/core/guards/auth.guard';
 import { LayoutComponent } from './modules/core/components/layout/layout.component';
 import { CartDetailsComponent } from './modules/cart-details/cart-details';
 import { AddProductComponent } from './modules/add-product/add-product';
-import {ViewOrderComponent} from "./modules/home/components/view-order/view-order.component";
-import {ContactComponent} from "./modules/home/components/contact/contact.component";
+import { ViewOrderComponent} from "./modules/home/components/view-order/view-order.component";
+import { FavoriteComponent } from "./modules/home/components/favorite/favorite.component";
 
 const routes: Routes = [
   {path: "cart-details", component: CartDetailsComponent},
   {path: "add-product", component: AddProductComponent},
   {path: "app-view-order", component: ViewOrderComponent},
-  {path: "app-contact", component: ContactComponent},
+  {path: "favorite", component: FavoriteComponent},
   {
     path: '',
     component: LayoutComponent,

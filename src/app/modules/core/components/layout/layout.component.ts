@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../home/services/cart-service';
-import { LoginService } from '../../../login/services/login.service';
 
 @Component({
   selector: 'app-layout',
@@ -16,7 +15,7 @@ export class LayoutComponent {
   totalQuantity: number = 0;
 
   constructor(private tokenService: TokenService, private router: Router,
-              private cartService: CartService, private loginService: LoginService) {}
+              private cartService: CartService) {}
 
   public logout() {
     this.tokenService.logout();
@@ -32,10 +31,6 @@ export class LayoutComponent {
 
   public viewOrders(){
     this.router.navigate(["app-view-order"]);
-  }
-
-  public sendEmail(){
-    this.router.navigate(["app-contact"]);
   }
 
   public isLoggedIn(){
@@ -77,5 +72,9 @@ export class LayoutComponent {
   openCart(){
     //go to cart details
     this.router.navigate(["/cart-details"]);
+  }
+
+  openFavoriteProducts() {
+    this.router.navigate(["/favorite"]);
   }
 }

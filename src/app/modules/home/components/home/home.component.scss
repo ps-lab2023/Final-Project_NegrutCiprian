@@ -1,0 +1,277 @@
+$blue: #3498db;
+
+.add-button {
+  position: relative;
+  margin: auto;
+  padding: 0;
+  border-radius: 1em;
+  outline: none;
+  background: none;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform .3s cubic-bezier(0.21, 0, 0.41, 1.26);
+  span, &::before, &::after {
+    display: block;
+    font: 1em/2 "open sans condensed";
+    text-transform: uppercase;
+  }
+  span {
+    border: 0.2em solid #f9c4ac;
+    border-radius: 1em;
+    background: #f9c4ac;
+    color: white;
+    transform: translateZ(3em);
+  }
+  &::before, &::after {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+  }
+  &::before {
+    content: "Sure?";
+    border: 0.2em solid #5b0e2d;
+    border-radius: 1em;
+    background: #5b0e2d;
+    color: white;
+    transform: rotateY(90deg) translateZ(3em);
+  }
+  &::after {
+    content: "OK, Fine!";
+    border-radius: 1em;
+    background: #f9c4ac;
+    color: white;
+    transform: rotateY(180deg) translateZ(3em);
+  }
+  &:hover, &:focus {
+    transform: rotateY(-90deg);
+  }
+  &:active, &:focus {
+    transform: rotateY(-180deg);
+  }
+}
+
+//DELETE AND UPDATE BUTTON
+
+body {
+  margin: 0;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  //--c: goldenrod;
+  //color: var(--c);
+  display: inline-block;
+  --c: #f84f2b;
+  color: var(--c);
+  font-size: 15px;
+  border: 0.2em solid var(--c);
+  border-radius: 0.5em;
+  width: 6em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 2.8em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 0.2em;
+}
+
+nav ul li span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+nav ul li:hover {
+  color: white;
+}
+
+nav ul li:hover span {
+  transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+  --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+  --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+  --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+  --n: 4;
+}
+
+// TEST SHITS
+
+.container-btn{
+  width: 100%;
+  height: 100vh;
+  background: #48ca95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn{
+  padding: 10px 60px;
+  background: white;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+  border-radius: 30px;
+}
+.popup{
+  width: 400px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-26%, -300%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333333;
+  visibility: hidden;
+  transition: transform 0.5s, top 0.5s;
+}
+.open-popup{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-45%, -50%) scale(1);
+}
+
+.popup button{
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #f84f2b;
+  color: #ffffff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-form-area{
+  background:#313131; //5b0e2d
+  position:relative;
+  padding:50px 50px;
+  border-radius: 55px;
+  text-align: center;
+  width: 500px;
+  height: 500px;
+}
+
+.label{
+  color: white;
+  display: inline-block;
+  width: 110px;
+  text-align: left;
+  font-size: 20px;
+}
+
+// Fav - Button
+
+.button-like {
+  background-color: transparent;
+  font-size: 40px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  color: var(--light-blue);
+  transition: all ease 0.8s;
+}
+
+.button-like span {
+  transition: all ease 0.8s;
+}
+
+.button-like:hover {
+  border-color: #f84f2b;
+  background-color: transparent;
+}
+
+.button-like:hover span {
+  color: #f84f2b;
+}
+
+
+// Popup - PROMO
+
+.popup-promo{
+  width: 400px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-26%, -300%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333333;
+  visibility: hidden;
+  transition: transform 0.5s, top 0.5s;
+}
+.open-popup-promo{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-45%, -50%) scale(1);
+}
+
+.popup-promo button{
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #f84f2b;
+  color: #ffffff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-promo-form-area{
+  background:#313131; //5b0e2d
+  position:relative;
+  padding:50px 50px;
+  border-radius: 55px;
+  text-align: center;
+  width: 500px;
+  height: 250px;
+}
+
+.popup-price{
+  visibility: hidden;
+}
+.open-popup-price{
+  visibility: visible;
+}

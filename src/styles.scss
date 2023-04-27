@@ -356,7 +356,7 @@ input.au-input.au-input-xl{
   line-height:43px;
   border:1px solid #e5e5e5;
   font-size:14px;
-  color:#666;
+  color:#fff;
   padding:0 17px;
   -webkit-border-radius:3px;
   -moz-border-radius:3px;
@@ -406,6 +406,26 @@ input.au-input.au-input-xl{
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
   margin-left:11px
+}
+
+.cart-button{
+  background: transparent;
+  line-height:35px;
+  color:#fff;
+  border-radius:0px;
+  float:left;
+  margin-top:12px;
+  padding-left:15px
+}
+
+.cart-button span{
+  display:inline-block;
+  border: 3px solid var(--light-blue);
+  background: transparent;
+  padding:0 13px;
+  color: #ffffff;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius:0.5em;
 }
 
 .form-header{
@@ -913,6 +933,7 @@ table.table.table-bordered th{
   background-color:#696669ff!important;
   border-color:#696669ff!important;
 }
+
 a.primary-btn{
   background:#05143f;
   padding:7px 20px;
@@ -1032,7 +1053,7 @@ footer ul li{
     padding-bottom:100px
   }
   .cart-area.d-n{
-    display:none
+    display:none;
   }
   .form-header{
     -webkit-box-pack:center;
@@ -1216,4 +1237,30 @@ footer ul li{
     border:0;
     padding:8px 0
   }
+}
+
+
+.button-order {
+  border: 1em solid var(--light-blue);
+  border-radius: 0.5em;
+  font-size: 20px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  color: var(--light-blue);
+  transition: all ease 0.8s;
+}
+
+.button-order span {
+  transition: all ease 0.8s;
+}
+
+.button-order:hover {
+  border-color: #ffffff;
+  background-color: transparent;
+}
+
+.button-order:hover span {
+  color: #FFFFFF;
 }

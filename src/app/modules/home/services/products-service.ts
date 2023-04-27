@@ -49,15 +49,14 @@ export class ProductService {
         name: name,
         category: category,
         description: desc,
-        price: price
+        price: price,
+        promo: ""
       }
     ).pipe(
       map(response => {
-        console.log(response);
+        console.log("Add response:" + response);
         const mapResponse = new Map(Object.entries(response));
         return mapResponse;
-        // return mapResponse.get("product");
-        // throw new Error("Check this");
       })
     );
   }
@@ -72,5 +71,22 @@ export class ProductService {
         return response;
       })
     );
+  }
+
+  updateProduct(id: String, product: Product):
+    Observable<Map<String, any>> {
+    console.log('UPDATE');
+    console.log(id);
+    const updateUrl = `http://localhost:8080/perfume/${id}`;
+    return this.httpClient.put<Map<String, any>>(
+      updateUrl,
+      {
+        name: product.name,
+        category: product.category,
+        description: product.description,
+        price: product.price,
+        promo: product.promo
+      }
+    )
   }
 }

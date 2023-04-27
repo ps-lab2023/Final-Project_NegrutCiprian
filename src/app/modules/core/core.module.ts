@@ -6,11 +6,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { TokenService } from './services/token.service';
 import { AuthGuard } from './guards/auth.guard';
 import { LayoutComponent } from './components/layout/layout.component';
-import { RouterOutlet } from '@angular/router';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @NgModule({
   declarations: [LayoutComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, RouterOutlet],
+    imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, RouterOutlet, RouterLink],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, TokenService, AuthGuard],
   exports: [
     LayoutComponent
