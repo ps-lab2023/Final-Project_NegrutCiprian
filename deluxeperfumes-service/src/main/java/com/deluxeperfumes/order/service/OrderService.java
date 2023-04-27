@@ -43,6 +43,9 @@ public class OrderService extends Observable {
                 order.setOrderPrice(order.getOrderPrice() + perfume.getPrice());
             });
         }
+
+        order.setOrderPrice(order.getOrderPrice() - (order.getOrderPrice() * (orderDto.getPromo()/100)));
+
         var orderSaved = orderRepository.save(order);
         orderSaved.getPerfumes().forEach(perfume -> {
             perfume.setOrder(orderSaved);

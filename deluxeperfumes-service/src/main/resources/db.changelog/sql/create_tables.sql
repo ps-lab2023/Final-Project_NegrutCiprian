@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS perfume
     name VARCHAR(36) UNIQUE,
     price double,
     category VARCHAR(36),
+    promo VARCHAR(36),
     identifier VARCHAR(36) UNIQUE,
     description VARCHAR(255),
     order_id BIGINT

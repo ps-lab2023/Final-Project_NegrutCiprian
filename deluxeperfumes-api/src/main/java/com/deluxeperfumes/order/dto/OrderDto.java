@@ -16,7 +16,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-@Schema(requiredProperties = {"username", "perfumeNames"})
+@Schema(requiredProperties = {"username", "perfumeNames", "promo"})
 public class OrderDto {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -34,4 +34,6 @@ public class OrderDto {
     private double orderPrice;
 
     private List<String> perfumeNames = new ArrayList<>();
+
+    private double promo;
 }

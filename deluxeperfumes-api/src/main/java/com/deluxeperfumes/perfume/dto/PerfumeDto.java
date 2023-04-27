@@ -29,4 +29,6 @@ public class PerfumeDto {
 
     @JsonProperty(access = Access.READ_ONLY)
     private UUID externalId;
+
+    private String promo;
 }

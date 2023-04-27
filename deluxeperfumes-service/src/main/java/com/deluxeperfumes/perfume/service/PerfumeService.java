@@ -25,6 +25,7 @@ public class PerfumeService {
     public PerfumeDto createPerfume(PerfumeDto perfumeDto) {
         var perfume = perfumeMapper.toEntity(perfumeDto);
         perfume.setCreatedDate(LocalDate.now());
+        perfume.setPromo("");
         if(perfumeDto.getIdentifier() == null || perfumeDto.getIdentifier().isEmpty())
             perfume.setIdentifier(perfume.getName().substring(0, 3) + LocalTime.now().getSecond());
         return perfumeMapper.toDto(perfumeRepository.save(perfume));
@@ -34,11 +35,13 @@ public class PerfumeService {
         var perfumeToUpdate = perfumeRepository.findPerfumeByExternalId(perfumeExternalId)
                 .orElseThrow(() -> new PerfumeNotFoundException(
                         "Could not find perfume with externalId " + perfumeExternalId));
-        perfumeToUpdate.setIdentifier(perfumeUpdated.getIdentifier());
+        perfumeToUpdate.setIdentifier(perfumeToUpdate.getIdentifier());
         perfumeToUpdate.setName(perfumeUpdated.getName());
         perfumeToUpdate.setUpdatedDate(LocalDate.now());
         perfumeToUpdate.setCategory(perfumeUpdated.getCategory());
-        perfumeToUpdate.setDescription(perfumeToUpdate.getDescription());
+        perfumeToUpdate.setDescription(perfumeUpdated.getDescription());
+        perfumeToUpdate.setPrice(perfumeUpdated.getPrice());
+        perfumeToUpdate.setPromo(perfumeUpdated.getPromo());
         perfumeRepository.save(perfumeToUpdate);
     }
 
