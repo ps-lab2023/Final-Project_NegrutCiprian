@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  //--c: goldenrod;
+  //color: var(--c);
+  display: inline-block;
+  --c: #f84f2b;
+  color: var(--c);
+  font-size: 15px;
+  border: 0.2em solid var(--c);
+  border-radius: 0.5em;
+  width: 6em;
+  height: 3em;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 2.8em;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.5s;
+  margin: 0.2em;
+}
+
+nav ul li span {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  background-color: var(--c);
+  transform: translateY(150%);
+  border-radius: 50%;
+  left: calc((var(--n) - 1) * 25%);
+  transition: 0.5s;
+  transition-delay: calc((var(--n) - 1) * 0.1s);
+  z-index: -1;
+}
+
+nav ul li:hover {
+  color: white;
+}
+
+nav ul li:hover span {
+  transform: translateY(0) scale(2);
+}
+
+nav ul li span:nth-child(1) {
+  --n: 1;
+}
+
+nav ul li span:nth-child(2) {
+  --n: 2;
+}
+
+nav ul li span:nth-child(3) {
+  --n: 3;
+}
+
+nav ul li span:nth-child(4) {
+  --n: 4;
+}
+
+// PROMO
+
+.popup-promo-cart{
+  width: 400px;
+  border-radius: 6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -300%) scale(0.1);
+  text-align: center;
+  padding: 0 30px 30px;
+  color: #333333;
+  visibility: hidden;
+  transition: transform 0.5s, top 0.5s;
+}
+.open-popup-promo-cart{
+  visibility: visible;
+  top: 50%;
+  transform: translate(-50%, -100%) scale(1);
+}
+
+.popup-promo-cart button{
+  width: 100%;
+  margin-top: 50px;
+  padding: 10px 0;
+  background: #f84f2b;
+  color: #ffffff;
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup-promo-cart-form-area{
+  background:#313131; //5b0e2d
+  position:relative;
+  padding:50px 50px;
+  border-radius: 55px;
+  text-align: center;
+  width: 500px;
+  height: 250px;
+}
+

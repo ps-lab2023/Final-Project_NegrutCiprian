@@ -1,0 +1,34 @@
+<div class='main-content'>
+  <div class='selection-contetnt selection-content-p30' style='padding-left: 35%; padding-top: 100px'>
+    <div class='container-fluid'>
+      <form d='request' class='main_form'>
+        <div class='order-form-area'>
+          <div style='padding-bottom:50px; text-align: center'>
+            <h2 style='color: #fcc4ac;'>View Orders</h2>
+          </div>
+          <div class='row'>
+            <div class='col-md-15'>
+              <table style="border-collapse: separate; border-spacing: 20px 15px;">
+                <tr >
+                  <th style='color: #f9c4ac; font-size: 20px'>Id</th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Username</th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Price</th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Perfumes</th>
+                </tr>
+                <tr *ngFor="let order of orders">
+                  <th style='border-top-left-radius: 20px; color: #ffffff; font-size: 15px'>{{order.identifier}}</th>
+                  <th style='color: #ffffff; font-size: 15px'>{{order.username}}</th>
+                  <th style='color: #ffffff; font-size: 15px'>{{order.orderPrice}}</th>
+                  <th style='color: #ffffff; font-size: 15px'>{{order.perfumeNames}}</th>
+                </tr>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

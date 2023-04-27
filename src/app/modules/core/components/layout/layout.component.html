@@ -34,6 +34,9 @@
         <li *ngIf="isAdmin() == true">
           <button (click)='toAddProduct()' style='color: #fcc4ac'>Add Product</button>
         </li>
+        <li *ngIf="isAdmin() == true">
+          <button (click)='viewOrders()' style='color: #fcc4ac'>View Order</button>
+        </li>
       </ul>
     </nav>
     <div class='username' style="font-size: 25px">
@@ -50,10 +53,15 @@
       <div class='container'>
         <a class='navbar-brand fw-bold xxl-text'><span></span></a>
         <ul class='navbar-nav fw-bold lg-text'>
+          <li style="padding-right: 20px; padding-top: 5px">
+            <button class="button-like" (click)="openFavoriteProducts()">
+              <span>♡</span>
+            </button>
+          </li>
           <li>
             <div class='cart-area d-n'>
               <button (click)='openCart()'>
-                <div class='total'>
+                <div class='cart-button'>
                   {{totalPrice | currency: "EUR"}}
                   <span>{{totalQuantity}}</span>
                 </div>

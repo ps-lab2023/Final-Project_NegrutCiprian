@@ -1,0 +1,41 @@
+<div class='main-content'>
+  <div class='selection-contetnt selection-content-p30' style='padding-left: 35%; padding-top: 100px'>
+    <div class='container-fluid'>
+      <form d='request' class='main_form'>
+        <div class='order-form-area'>
+          <div style='padding-bottom:50px; text-align: center'>
+            <h2 style='color: #fcc4ac;'>Favorite Products</h2>
+          </div>
+          <div class='row'>
+            <div class='col-md-15'>
+              <table style="border-collapse: separate; border-spacing: 2.4em 15px;">
+                <tr >
+                  <th style='color: #f9c4ac; font-size: 20px'></th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Name</th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Price</th>
+                  <th style='color: #f9c4ac; font-size: 20px'>Quantity</th>
+                </tr>
+                <tr *ngFor="let favorite of favProducts">
+                  <th>
+                    <nav>
+                      <ul>
+                        <li (click)="removeFromCart(favorite)">
+                          X
+                          <span></span><span></span><span></span><span></span></li>
+                      </ul>
+                    </nav>
+                  </th>
+                  <th style='color: #ffffff; font-size: 20px'>{{favorite.name}}</th>
+                  <th style='color: #ffffff; font-size: 20px'>{{favorite.price}} €</th>
+                  <th style='color: #ffffff; font-size: 20px'>{{favorite.quantity}}</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

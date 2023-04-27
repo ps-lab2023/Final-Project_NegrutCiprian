@@ -13,8 +13,10 @@ export class CartService {
 
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
+  promoDiscount: number = 0;
 
   constructor(private httpClient: HttpClient, private tokenService: TokenService) { }
+
   addToCart(theCartItem: CartItem) {
 
     let newCartItem: boolean = true;
@@ -48,6 +50,7 @@ export class CartService {
     this.cartItems = [];
     this.totalPrice.next(0);
     this.totalQuantity.next(0);
+    this.promoDiscount = 0;
   }
 
   removeFromCart(theCartItem: CartItem) {
@@ -66,9 +69,8 @@ export class CartService {
       totalPriceValue += cartItem.price * cartItem.quantity;
       totalQuantityValue += cartItem.quantity;
     });
-    this.totalPrice.next(totalPriceValue);
+    this.totalPrice.next(totalPriceValue - (totalPriceValue * (this.promoDiscount/100)));
     this.totalQuantity.next(totalQuantityValue);
-
   }
 
   placeOrder(){
@@ -79,6 +81,7 @@ export class CartService {
         perfumeNames: this.cartItems.map(item=>{
           return item.name;
         }),
+        promo: this.promoDiscount
       }
     ).pipe(
       map(response => {

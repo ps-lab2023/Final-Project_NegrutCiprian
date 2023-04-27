@@ -1,20 +1,54 @@
 <div class='main-content'>
   <div class='selection-contetnt selection-content-p30'>
     <div class='container-fluid'>
-      <div class='row' >
+      <div class='row'>
         <!-- loop over the collection of products -->
         <div *ngFor='let tempProduct of products' class='col-md-3'>
-          <div class='product-box' >
-            <img src='assets/perfume3.png' alt='{{tempProduct.name}}' class='img-responsive' />
-            <h1>{{ tempProduct.name }}</h1>
+          <div class='product-box'>
+            <img src='assets/perfume3.png' alt='{{tempProduct.name}}' class='img-responsive'/>
+            <h1 style="font-weight: bold; font-size: 25px;">{{ tempProduct.name }}</h1>
             <h6>Category: {{tempProduct.category}}</h6>
             <h6>Description: {{tempProduct.description}}</h6>
-            <h6><div class='price'>{{tempProduct.price | currency:'EUR'}}</div></h6>
-            <h6><button (click)='addToCart(tempProduct)' class='btn btn-primary btn-sm'
-              style='background-color: #9c7c8c; border-color: #9c7c8c'>Add to cart</button>
-            <br><br>
-            <button *ngIf="isAdmin() == true" (click)='delete(tempProduct.externalId)' class='btn btn-primary btn-sm'
-                    style='background-color: #f84f2b; border-color: #f84f2b; '>Delete</button></h6>
+            <h6>
+              <div class='price' style="font-size: 22px">
+                <ul>
+                  <li style="display: inline-block;">
+                    {{tempProduct.price | currency:'EUR'}}
+                  </li>
+                  <li style="display: inline-block; padding-left: 10px; color: #f84f2b; font-weight: bold">
+                    {{tempProduct.promo}}
+                  </li>
+                </ul>
+              </div>
+            </h6>
+            <h6>
+              <button (click)='addToCart(tempProduct)' class='add-button' style="margin-right: 20px">
+                <span>Add to Cart</span>
+              </button>
+
+              <button class="button-like" (click)="addToFavorite(tempProduct)" style="">
+                <span>♡</span>
+              </button>
+
+              <br><br>
+              <nav *ngIf="isAdmin() == true">
+                <ul>
+                  <li (click)='delete(tempProduct.externalId)'>
+                      Delete
+                      <span></span><span></span><span></span><span></span></li>
+                  <li (click)='openPopup(tempProduct)'>
+                    Update
+                    <span></span><span></span><span></span><span></span>
+                  </li>
+                </ul>
+                <ul>
+                  <li (click)='openPopupPromo(tempProduct)' style="width: 80px; height: 30px; line-height: 2em">
+                    Promo
+                  <span></span><span></span><span></span><span></span>
+                  </li>
+                </ul>
+              </nav>
+            </h6>
           </div>
         </div>
 
@@ -22,7 +56,89 @@
         <div *ngIf='products?.length == 0' class='alert alert-warning col-md-12' role='alert'>
           No products found.
         </div>
+
       </div>
     </div>
   </div>
+</div>
+
+<div class='popup' id="popup" style="z-index: 10; opacity:0.95;">
+  <form d='request' class='main_form'>
+    <div class='popup-form-area' [formGroup]="form">
+      <div style='padding-bottom:50px; text-align: center'>
+        <h2 style='color: #fcc4ac;'>Update Product</h2>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-15'>
+          <label class="label">Name: </label>
+          <input type='type' class='contactus' placeholder='Name' formControlName="name">
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <label class="label">Category: </label>
+          <input type='type' class='contactus' placeholder='Category' formControlName="category">
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <label class="label">Description: </label>
+          <input  type='type' class='contactus' placeholder='Description' formControlName="description">
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <label class="label">Price: </label>
+          <input  type='type' class='contactus' placeholder='Price' formControlName="price">
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li (click)='closePopup()' style="width: 10em; height: 3em; border-color: #fcc4ac; color: #fff">
+            Update
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </form>
+</div>
+
+<div class='popup' id="popup-promo" style="z-index: 10; opacity:0.95;">
+  <form d='request' class='main_form'>
+    <div class='popup-promo-form-area' [formGroup]="form">
+      <div style='padding-bottom:15px; text-align: center'>
+        <h2 style='color: #fcc4ac;'>Promo Product</h2>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <label class="label">Price: </label>
+          <input  type='type' class='contactus' placeholder='Price' formControlName="price">
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li (click)='closePopupPromo()' style="width: 10em; height: 3em; border-color: #fcc4ac; color: #fff">
+            Update
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+            <span style="background: #fcc4ac"></span>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </form>
 </div>
