@@ -519,8 +519,7 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar{
-  padding:35px;
-  padding-bottom:0;
+  padding: 35px 35px 0px;
 }
 
 .navbar-sidebar .navbar-list li a{
@@ -1263,4 +1262,14 @@ footer ul li{
 
 .button-order:hover span {
   color: #FFFFFF;
+}
+
+.disabled {
+  font-size: 30px;
+  color: red;
+}
+
+.enable {
+  font-size: 30px;
+  color: white;
 }

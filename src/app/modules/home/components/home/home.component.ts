@@ -40,7 +40,8 @@ export class HomeComponent implements OnInit {
         price: new FormControl('', []),
         externalId: new FormControl('', []),
         identifier: new FormControl('', []),
-        promo: new FormControl('', [])
+        promo: new FormControl('', []),
+        outOfStock: new FormControl('', [])
     });
   }
 
@@ -64,13 +65,19 @@ export class HomeComponent implements OnInit {
     this.productService.getProductList(this.currentCategoryId).subscribe(
       data => {
         this.products = data;
+        this.products.forEach(p => {
+          if(localStorage.getItem(p.identifier) === "true")
+            p.outOfStock = true;
+        })
       }
     );
   }
 
   addToCart(product: Product) {
-    const cartItem = new CartItem(product);
-    this.cartService.addToCart(cartItem);
+    if(!product.outOfStock) {
+      const cartItem = new CartItem(product);
+      this.cartService.addToCart(cartItem);
+    }
   }
 
   addToFavorite(product: Product){
@@ -143,6 +150,24 @@ export class HomeComponent implements OnInit {
   closePopupPromo(){
     let popup = document.getElementById("popup-promo");
     popup!.classList.remove("open-popup-promo");
+    let id = this.form.get("externalId").value;
+    console.log(this.form.value);
+    this.update(id, this.form.value);
+  }
+
+  setOutOfStock(product: Product){
+
+    this.form.patchValue({
+      name: product.name,
+      category: product.category,
+      description: product.description,
+      price: product.price,
+      externalId: product.externalId,
+      identifier: product.identifier,
+      promo: product.promo,
+      outOfStock: !(product.outOfStock == true)
+    })
+
     let id = this.form.get("externalId").value;
     console.log(this.form.value);
     this.update(id, this.form.value);
