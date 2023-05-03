@@ -50,7 +50,8 @@ export class ProductService {
         category: category,
         description: desc,
         price: price,
-        promo: ""
+        promo: "",
+        outOfStock: false
       }
     ).pipe(
       map(response => {
@@ -85,7 +86,8 @@ export class ProductService {
         category: product.category,
         description: product.description,
         price: product.price,
-        promo: product.promo
+        promo: product.promo,
+        outOfStock: product.outOfStock
       }
     )
   }
