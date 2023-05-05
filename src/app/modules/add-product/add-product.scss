@@ -1,0 +1,25 @@
+.button-like {
+  border: 3px solid var(--light-blue);
+  border-radius: 0.5em;
+  background-color: transparent;
+  font-size: 30px;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  color: var(--light-blue);
+  transition: all ease 0.8s;
+}
+
+.button-like span {
+  transition: all ease 0.8s;
+}
+
+.button-like:hover {
+  border-color: #FFFFFF;
+  background-color: transparent;
+}
+
+.button-like:hover span {
+  color: #fff;
+}

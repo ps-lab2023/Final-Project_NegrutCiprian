@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../home/services/cart-service';
+import {Product} from "../../../../models/product";
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +10,6 @@ import { CartService } from '../../../home/services/cart-service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent {
-
 
   totalPrice: number = 0.00;
   totalQuantity: number = 0;
