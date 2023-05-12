@@ -1,0 +1,6 @@
+ciprianNGR@gmail.com
+
+8BB5E2C051D32269DB4FBC4A8BA00BA4DC47
+
+Server: smtp.elasticemail.com 
+Port:2525
