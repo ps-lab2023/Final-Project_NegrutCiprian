@@ -3,6 +3,7 @@ import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../home/services/cart-service';
 import {Product} from "../../../../models/product";
+import {WebSocketAPI} from "../../../login/components/greeting-message/WebSocketAPI";
 
 @Component({
   selector: 'app-layout',
@@ -13,16 +14,21 @@ export class LayoutComponent {
 
   totalPrice: number = 0.00;
   totalQuantity: number = 0;
-
   constructor(private tokenService: TokenService, private router: Router,
               private cartService: CartService) {}
 
   public logout() {
     this.tokenService.logout();
     this.cartService.removeAll();
+    this.tokenService.disconnect();
   }
+
   public toCategory(type:String){
     this.router.navigate([`category/${type}`]);
+  }
+
+  public greetingMessage(){
+    this.tokenService.sendMessage(this.tokenService.getUsername());
   }
 
   public toAddProduct(){

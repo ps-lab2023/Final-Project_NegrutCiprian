@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+import {WebSocketAPI} from "../../login/components/greeting-message/WebSocketAPI";
 
 @Injectable()
 export class TokenService {
@@ -8,6 +9,11 @@ export class TokenService {
   private REFRESH_TOKEN_KEY = 'refreshToken';
   private USERNAME_KEY = 'username';
   private ADMIN_KEY = 'adminKey';
+
+  greeting: string;
+  name: string;
+  webSocketAPIStored: WebSocketAPI
+
 
   constructor(private router: Router) {}
 
@@ -58,4 +64,21 @@ export class TokenService {
       return null;
     }
   }
+
+  // Web Socket
+
+  connect(webSocketAPI: WebSocketAPI){
+    webSocketAPI._connect();
+    this.webSocketAPIStored = webSocketAPI;
+  }
+
+  disconnect(){
+    this.webSocketAPIStored._disconnect();
+  }
+
+  sendMessage(username: string){
+    this.webSocketAPIStored._send(username);
+  }
+  // Web Socket
+
 }
