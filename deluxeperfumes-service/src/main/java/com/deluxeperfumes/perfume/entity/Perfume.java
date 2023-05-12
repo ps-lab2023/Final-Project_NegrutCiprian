@@ -25,6 +25,7 @@ public class Perfume extends BaseEntity {
     private String description;
     private double price;
     private String promo;
+    private boolean outOfStock;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")

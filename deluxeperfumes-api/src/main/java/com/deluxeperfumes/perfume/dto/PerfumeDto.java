@@ -31,4 +31,6 @@ public class PerfumeDto {
     private UUID externalId;
 
     private String promo;
+
+    private boolean outOfStock;
 }

@@ -31,39 +31,39 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-  private final JwtService jwtService;
+    private final JwtService jwtService;
 
-  @Override
-  protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-      FilterChain filterChain) throws ServletException, IOException {
-    String authorizationHeader = request.getHeader(AUTHORIZATION);
-    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-      String token = getToken(request);
-      try {
-        Map<String, Object> claims = jwtService.parseClaims(token);
-        SecurityContextHolder.getContext().setAuthentication(createAuthentication(claims));
-        filterChain.doFilter(request, response);
-      } catch (ExpiredJwtException e) {
-        log.info("EXPIRED JWT - user allowed only if endpoint is authorized with .permitAll()");
-        filterChain.doFilter(request, response);
-      }
-    } else {
-      filterChain.doFilter(request, response);
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
+        String authorizationHeader = request.getHeader(AUTHORIZATION);
+        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+            String token = getToken(request);
+            try {
+                Map<String, Object> claims = jwtService.parseClaims(token);
+                SecurityContextHolder.getContext().setAuthentication(createAuthentication(claims));
+                filterChain.doFilter(request, response);
+            } catch (ExpiredJwtException e) {
+                log.info("EXPIRED JWT - user allowed only if endpoint is authorized with .permitAll()");
+                filterChain.doFilter(request, response);
+            }
+        } else {
+            filterChain.doFilter(request, response);
+        }
     }
-  }
 
-  private Authentication createAuthentication(Map<String, Object> claims) {
-    List<SimpleGrantedAuthority> roles = Arrays.stream(claims.get("roles").toString().split(","))
-        .map(SimpleGrantedAuthority::new)
-        .collect(Collectors.toList());
-    return new UsernamePasswordAuthenticationToken(claims.get(Claims.SUBJECT), null, roles);
-  }
+    private Authentication createAuthentication(Map<String, Object> claims) {
+        List<SimpleGrantedAuthority> roles = Arrays.stream(claims.get("roles").toString().split(","))
+                .map(SimpleGrantedAuthority::new)
+                .collect(Collectors.toList());
+        return new UsernamePasswordAuthenticationToken(claims.get(Claims.SUBJECT), null, roles);
+    }
 
-  private String getToken(HttpServletRequest request) {
-    return Optional.ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
-        .filter(auth -> auth.startsWith("Bearer "))
-        .map(auth -> auth.replace("Bearer ", ""))
-        .orElseThrow(() -> new BadCredentialsException("Invalid token"));
-  }
+    private String getToken(HttpServletRequest request) {
+        return Optional.ofNullable(request.getHeader(HttpHeaders.AUTHORIZATION))
+                .filter(auth -> auth.startsWith("Bearer "))
+                .map(auth -> auth.replace("Bearer ", ""))
+                .orElseThrow(() -> new BadCredentialsException("Invalid token"));
+    }
 
 }

@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS perfume
     promo VARCHAR(36),
     identifier VARCHAR(36) UNIQUE,
     description VARCHAR(255),
+    out_of_stock BIT,
     order_id BIGINT
 );
 

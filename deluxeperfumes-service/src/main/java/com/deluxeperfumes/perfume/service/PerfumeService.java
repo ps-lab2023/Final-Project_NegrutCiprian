@@ -42,6 +42,7 @@ public class PerfumeService {
         perfumeToUpdate.setDescription(perfumeUpdated.getDescription());
         perfumeToUpdate.setPrice(perfumeUpdated.getPrice());
         perfumeToUpdate.setPromo(perfumeUpdated.getPromo());
+        perfumeToUpdate.setOutOfStock(perfumeUpdated.isOutOfStock());
         perfumeRepository.save(perfumeToUpdate);
     }
 
