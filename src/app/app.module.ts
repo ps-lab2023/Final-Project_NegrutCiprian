@@ -5,13 +5,15 @@ import { SharedModule } from "./modules/shared/shared.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { CartDetailsComponent } from './modules/cart-details/cart-details';
 import { AddProductComponent } from './modules/add-product/add-product';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FavoriteComponent } from "./modules/home/components/favorite/favorite.component";
+import {GreetingMessageComponent} from "./modules/login/components/greeting-message/greeting-message.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AddProductComponent,
+    GreetingMessageComponent,
     CartDetailsComponent,
     FavoriteComponent
   ],
@@ -19,7 +21,8 @@ import { FavoriteComponent } from "./modules/home/components/favorite/favorite.c
     CoreModule,
     SharedModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

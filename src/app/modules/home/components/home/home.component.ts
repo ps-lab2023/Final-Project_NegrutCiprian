@@ -50,7 +50,6 @@ export class HomeComponent implements OnInit {
   }
 
   handleListProducts(){
-    console.log(this.products);
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has("type");
 
     if (hasCategoryId) {
@@ -61,6 +60,7 @@ export class HomeComponent implements OnInit {
       this.currentCategoryId = "";
     }
 
+    console.log(this.currentCategoryId);
 
     this.productService.getProductList(this.currentCategoryId).subscribe(
       data => {
